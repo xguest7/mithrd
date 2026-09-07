@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>산업구조변화대응 특화훈련</title>
+
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Pretendard', -apple-system, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            letter-spacing: -0.05em;
+        }
+
+        nav {
+            position: fixed; top: 0; width: 100%; height: 80px;
+            display: flex; justify-content: center; align-items: center;
+            padding: 0 4vw; z-index: 1000;
+            mix-blend-mode: difference; 
+            color: white; 
+        }
+
+        .nav-inner {
+            width: 100%; display: flex; justify-content: space-between;
+            font-size: 0.9rem; font-weight: 700; text-transform: uppercase;
+        }
+
+        :root {
+            --text-main: #111827;
+            --text-sub: #6B7280;
+            --border: #E5E7EB;
+            --bg: #FFFFFF;
+            --accent: #2563EB; 
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Pretendard', -apple-system, sans-serif;
+            color: var(--text-main);
+            background: var(--bg);
+            line-height: 1.65;
+            word-break: keep-all; 
+        }
+
+
+        .container {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+  
+        .grid {
+            display: grid;
+            grid-template-columns: 5fr 7fr;
+            gap: 72px;
+            align-items: center;
+        }
+
+  
+        .hero {
+            padding: 160px 0 120px;
+            background: linear-gradient(to bottom, #fcfcfc, #ffffff);
+        }
+
+        h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            letter-spacing: -0.03em;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .hero p {
+            margin-top: 24px;
+            font-size: 18px;
+            color: var(--text-sub);
+            max-width: 400px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 16px 28px;
+            font-size: 16px;
+            font-weight: 600;
+            background: var(--text-main);
+            color: white;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn:hover {
+            background: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+ 
+        .mock {
+            height: 300px; 
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden; 
+            background: #f9fafb; /
+        }
+
+
+        .mock img {
+            width: 100%;     
+            height: 100%;    
+            object-fit: cover; 
+            object-position: center; 
+            display: block;
+        }
+
+
+        section {
+            padding: 120px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 32px;
+        }
+
+        .list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .item {
+            padding: 24px;
+            border-radius: 16px;
+            background: #f9fafb;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .item:hover {
+            background: #ffffff;
+            border-color: var(--border);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .item strong {
+            display: block;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .item span {
+            display: block;
+            margin-top: 8px;
+            font-size: 15px;
+            color: var(--text-sub);
+        }
+
+
+        .curriculum-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .week-num {
+            font-weight: 800;
+            color: var(--accent);
+            font-size: 14px;
+            text-transform: uppercase;
+            min-width: 50px;
+        }
+
+
+        .reverse {
+            grid-template-columns: 7fr 5fr;
+        }
+
+
+        .cta {
+            text-align: center;
+            padding: 160px 0;
+            background: #f9fafb;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+        }
+
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-up.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+		#gwhrd,	#mit {
+			cursor: pointer;
+			color: inherit;
+			transition: color 0.2s ease;
+		}
+		
+		#gwhrd:hover, #mit:hover {
+			color: #2563EB;
+		}
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .grid.reverse {
+                display: flex;
+                flex-direction: column-reverse;
+            }
+
+            .hero {
+                padding: 100px 0 80px;
+                text-align: center;
+            }
+
+            .hero p {
+                margin: 24px auto 0;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            .mock {
+                height: 300px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <nav>
+        <div class="nav-inner">
+            <div id="gwhrd">강원지역인적자원개발위원회</div>
+            <div id="mit">엠아이티능력개발원</div>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="container">
+            <div class="grid fade-up">
+                <div class="mock">
+                    <img src="260420UI.jpg" alt="AI UI/UX 훈련 프로그램 예시 이미지">
+                </div>
+
+                <div>
+                    <h1>
+                        AI기반 UI/UX 반응형 웹 퍼블리셔 양성과정
+                    </h1>
+                    <p>
+                        처음 배우는 사람도 실무 수준의 업무를 진행할 수 있도록 체계적으로 설계된 특화훈련 입니다.
+                    </p>
+                    <a href="https://m.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20263001251348&tracseTme=1&cstmConsTme=&crseTracseSe=C0061&trainstCstmrId=500020034374&tracseReqstsCd=&focusId=" class="btn">고용24에서 확인하기</a>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <div class="grid fade-up">
+                <div>
+                    <h2>무엇을<br>배우게 되나요?</h2>
+                </div>
+                <div class="list">
+                    <div class="item">
+                        <strong>AI에 대한 이해와 활용</strong>
+                        <span>2026년 AI 트렌드부터 실무에 바로 적용 가능한 AI 도구 활용법까지 전반적으로 익히게 됩니다.</span>
+                    </div>
+                    <div class="item">
+                        <strong>UI/UX 디자인 도구</strong>
+                        <span>UI/UX 디자인 업계에서 사실상 표준으로 사용되는 Figma의 활용 방법을 익히게 됩니다.</span>
+                    </div>
+                    <div class="item">
+                        <strong>웹 페이지 및 웹 접근성</strong>
+                        <span>웹페이지를 구성하는 HTML, CSS, JavaScript를 학습하고, 장애 여부와 관계없이 누구나 웹사이트를 이용할 수 있도록 하는 웹 접근성까지 함께 익히게 됩니다.</span>
+                    </div>
+                    <div class="item">
+                        <strong>실무 워크플로우</strong>
+                        <span>AI를 활용한 UI/UX 기획부터 웹사이트 구현까지, 실제 업무 흐름을 기반으로 전 과정을 배우게 됩니다.</span>
+                    </div>
+                    <div class="item">
+                        <strong>프로젝트</strong>
+                        <span>공공·기존 서비스를 리디자인하는 프로젝트와 상업용 랜딩페이지를 구축하는 두 가지 프로젝트를 진행합니다.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="grid reverse fade-up">
+                <div class="list">
+                    <div class="item curriculum-item">
+                        <div class="week-num">교육일정</div>
+                        <div>2026-10-26 ~ 2027-02-23</div>
+                    </div>
+                    <div class="item curriculum-item">
+                        <div class="week-num">훈련시간</div>
+                        <div>평일 09:00 ~ 16:40 (점심시간 12:50 ~ 1:50)</div>
+                    </div>
+					<div class="item curriculum-item">
+                        <div class="week-num">훈련수당</div>
+                        <div>매월 40만원(총140만원)<br></div>
+                    </div>					
+                    <div class="item curriculum-item">
+                        <div class="week-num">수강료</div>
+                        <div><s>4,259,970원</s> 0원부터 최대30만원</div>
+                    </div>
+
+                    <div class="item curriculum-item">
+                        <div class="week-num">수강혜택</div>
+                        <div>수료후 6개월까지 취업 지원<br>
+							 자소서·면접 1:1 취업코칭<br>
+							 포트폴리오를 위한 서버 제공</div>
+                    </div>
+                 </div>
+                <div>
+                    <h2><strong>국비 지원</strong> 으로<br>비용 부담 없이,<br><strong>훈련수당</strong>까지 지원받으며<br>학습할 수 있습니다.</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="cta fade-up">
+        <div class="container">
+            <h2>망설이지 말고 도전하세요</h2>
+            <p>여러분의 손끝에서 새로운 서비스 화면이 탄생합니다.</p>
+        <a href="https://mit.or.kr/p/?j=55" class="btn">상담 신청</a>
+        </div>
+    </div>
+
+    <script>
+        // Intersection Observer 설정
+        const elements = document.querySelectorAll('.fade-up');
+
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, observerOptions);
+
+        elements.forEach(el => observer.observe(el));
+		
+		document.getElementById("gwhrd").addEventListener("click", function() {
+			window.location.href = "https://gwhrd.or.kr/bbs/content.php?co_id=sub02_5";
+		});
+		
+		document.getElementById("mit").addEventListener("click", function() {
+			window.location.href = "https://www.mit.or.kr/";
+		});
+		
+    </script>
+
+</body>
+</html>
